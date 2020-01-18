@@ -118,7 +118,7 @@ class Projects extends React.Component {
             <Fade>
             <div className="">
             <p>&nbsp;</p>
-            <p className="text-center">I thrive in versatility, being able to make an impact at nearly any role within the front-end spectrum:</p>
+            <p>I thrive in versatility, being able to make an impact at nearly any role within the front-end spectrum:</p>
             <h5>Design</h5>
             <p>My Digital Science background has helped to foster a keen eye in both graphic and user-centered design. I love working through UX testing, UI development in low/high fidelity mockups, graphic design via Photoshop or inDesign, and even branding/identity development.</p>
             <h5>Development</h5>

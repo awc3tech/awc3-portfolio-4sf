@@ -1,0 +1,3 @@
+VANTA.WAVES({
+  el: "#vantaBG"
+})
