@@ -1,57 +1,37 @@
 import React from "react"
-import { Link } from "gatsby"
+import { rhythm } from "../utils/typography"
+import { helmet } from "react-helmet"
 
-import { rhythm, scale } from "../utils/typography"
+import * as THREE from 'three'
+import WAVES from '../vantasrc/vanta.WAVES'
+
+
 
 class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
+  componentDidMount() {
+    this.vantaEffect = WAVES({
+      el: "#vantaBG",
+      THREE: THREE, // use a custom THREE when initializing
+      color: 0x1d1d1d,
+      shininess: 13.00,
+      waveHeight: 40.00,
+      waveSpeed: 0.55
+    })
+  }
+
+
+  componentWillUnmount() {
+    const effect = WAVES('#vantaBG');
+    effect.destroy(); // e.g. call this in React's componentWillUnmount
+  }
+
+
+  render() {
+    const { children } = this.props
+    
     return (
+
       <div
         style={{
           marginLeft: `auto`,
@@ -60,13 +40,16 @@ class Layout extends React.Component {
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+      <helmet>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />  
+
+      </helmet>
+
+        <main><div className="container"><div className="vignette"></div>{children}</div></main>
+        <div id="vantaBG"></div>
+
       </div>
     )
   }
