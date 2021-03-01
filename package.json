@@ -41,7 +41,7 @@
     "react-reveal": "^1.2.2",
     "react-script-tag": "^1.1.2",
     "react-typography": "^0.16.19",
-    "three": "^0.112.1",
+    "three": "^0.125.0",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
     "typography": "^0.16.19",
